@@ -152,8 +152,8 @@
 \setbool{acvSectionColorHighlight}{true}
 
 % Awesome section color
-\def\@sectioncolor#1#2#3{%
-  \ifbool{acvSectionColorHighlight}{{\color{awesome}#1#2#3}}{#1#2#3}%
+\def\@sectioncolor{%
+  \ifbool{acvSectionColorHighlight}{\color{awesome}}{}%
 }
 
 
@@ -179,9 +179,14 @@
   BoldItalicFont=*-MediumItalic,
 ]{Roboto}
 
+
 \newcommand*{\footerfont}{\sourcesanspro}
 \newcommand*{\bodyfont}{\sourcesanspro}
 \newcommand*{\bodyfontlight}{\sourcesansprolight}
+
+%\newcommand*{\footerfont}{\sourceserifpro}
+%\newcommand*{\bodyfont}{\sourceserifpro}
+%\newcommand*{\bodyfontlight}{\sourceserifprolight}
 
 %-------------------------------------------------------------------------------
 %                Configuration for styles
@@ -192,19 +197,19 @@
 \newcommand*{\headerlastnamestyle}[1]{{\fontsize{32pt}{1em}\headerfont\bfseries\color{text} #1}}
 \newcommand*{\headerpositionstyle}[1]{{\fontsize{7.6pt}{1em}\bodyfont\scshape\color{awesome} #1}}
 \newcommand*{\headeraddressstyle}[1]{{\fontsize{8pt}{1em}\headerfont\itshape\color{lighttext} #1}}
-\newcommand*{\headersocialstyle}[1]{{\fontsize{6.8pt}{1em}\headerfont\color{text} #1}}
+\newcommand*{\headersocialstyle}[1]{{\fontsize{8pt}{1em}\headerfont\color{text} #1}}
 \newcommand*{\headerquotestyle}[1]{{\fontsize{9pt}{1em}\bodyfont\itshape\color{darktext} #1}}
 \newcommand*{\footerstyle}[1]{{\fontsize{8pt}{1em}\footerfont\scshape\color{lighttext} #1}}
 \newcommand*{\sectionstyle}[1]{{\fontsize{16pt}{1em}\bodyfont\bfseries\color{text}\@sectioncolor #1}}
 \newcommand*{\subsectionstyle}[1]{{\fontsize{12pt}{1em}\bodyfont\scshape\textcolor{text}{#1}}}
-\newcommand*{\paragraphstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}
+\newcommand*{\paragraphstyle}{\fontsize{11pt}{1.1em}\bodyfontlight\upshape\color{text}}
 
 % For elements of entry
-\newcommand*{\entrytitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
-\newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
-\newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newcommand*{\entrytitlestyle}[1]{{\fontsize{11pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
+\newcommand*{\entrypositionstyle}[1]{{\fontsize{11pt}{1em}\bodyfont\scshape\color{graytext} #1}}
+\newcommand*{\entrydatestyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
+\newcommand*{\entrylocationstyle}[1]{{\fontsize{11pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
+\newcommand*{\descriptionstyle}[1]{{\fontsize{11pt}{1.1em}\bodyfontlight\upshape\color{text} #1}}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -452,6 +457,7 @@
     \\[\acvHeaderAfterNameSkip]%
     \ifthenelse{\isundefined{\@position}}{}{\headerpositionstyle{\@position\\[\acvHeaderAfterPositionSkip]}}%
     \ifthenelse{\isundefined{\@address}}{}{\headeraddressstyle{\@address\\[\acvHeaderAfterAddressSkip]}}%
+    \vspace{5pt}
     \headersocialstyle{%
       \newbool{isstart}%
       \setbool{isstart}{true}%
@@ -579,7 +585,7 @@
 % Define a paragraph for CV
 \newenvironment{cvparagraph}{%
   \vspace{\acvSectionContentTopSkip}
-  \vspace{-3mm}
+  \vspace{-1mm}
   \paragraphstyle
 }{%
   \par
@@ -596,7 +602,7 @@
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
-  \vspace{-2.0mm}
+  \vspace{-1.0mm}
   \setlength\tabcolsep{0pt}
   \setlength{\extrarowheight}{0pt}
   \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{\textwidth - 4.5cm} R{4.5cm}}
@@ -670,15 +676,15 @@
 
 % Define an environment for cvitems(for cventry)
 \newenvironment{cvitems}{%
-  \vspace{-4.0mm}
+  \vspace{-3.0mm}
   \begin{justify}
   \begin{itemize}[leftmargin=2ex, nosep, noitemsep]
-    \setlength{\parskip}{0pt}
+    \setlength{\parskip}{2pt}
     \renewcommand{\labelitemi}{\bullet}
 }{%
   \end{itemize}
   \end{justify}
-  \vspace{-4.0mm}
+  \vspace{-2.0mm}
 }
 
 
